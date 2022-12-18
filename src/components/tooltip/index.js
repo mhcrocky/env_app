@@ -18,12 +18,12 @@ export default function Tooltip({ children, tooltipText }) {
             onMouseLeave={handleMouseLeave}
         >
             <div
-                className=" md:hidden absolute whitespace-no-wrap bg-gradient-to-r from-black to-gray-700 text-white px-4 py-2 rounded flex items-center transition-all duration-150"
+                className=" md:hidden absolute whitespace-no-wrap bg-gray-800 text-white px-4 py-2 rounded flex items-center transition-all duration-150"
                 style={{ left: "100%", opacity: 0 }}
                 ref={tipRef}
             >
                 <div
-                    className="bg-black h-3 w-3 absolute"
+                    className="bg-gray-800 h-3 w-3 absolute"
                     style={{ left: "-6px", transform: "rotate(45deg)" }}
                 />
                 {tooltipText}

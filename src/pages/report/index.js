@@ -29,7 +29,7 @@ export default function Report() {
     ]
     return (
         <>
-            <div className="grid gap-x-6 gap-y-6 grid-cols-3">
+            <div className="grid gap-x-6 gap-y-6 md:grid-cols-3 grid-cols-1">
                 <div className="text-center p-5 bg-gray-600 rounded">01</div>
                 <div className="text-center p-5 bg-gray-600 rounded">02</div>
                 <div className="text-center p-5 bg-gray-600 rounded">03</div>
@@ -38,7 +38,7 @@ export default function Report() {
             <div className="flex flex-col">
                 <div className="overflow-x-auto">
                     <div className="mt-10 w-full inline-block align-middle">
-                        <div className="overflow-hidden border rounded-lg">
+                        <div className="overflow-auto border rounded-lg">
                             <table className="min-w-full divide-y divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>

@@ -1,22 +1,13 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
-import { toRelativeUrl } from '@okta/okta-auth-js';
 
 const Home = () => {
 
   const { oktaAuth, authState } = useOktaAuth();
 
-  // if (!authState || !authState?.isAuthenticated) {
-  //   const originalUri = toRelativeUrl(window.location.href, window.location.origin);
-  //   oktaAuth.setOriginalUri(originalUri);
-  //   oktaAuth.signInWithRedirect();
-  // }
-
-  const loggingIn = async () => await oktaAuth.signInWithRedirect({ originalUri: "/" });
+  const loggingIn = async () => await oktaAuth.signInWithRedirect({ originalUri: "/resource" });
   const loggingOut = async () => {
     await oktaAuth.signOut();
-    oktaAuth.tokenManager.clear();
   }
   
   return (
@@ -41,7 +32,6 @@ const Home = () => {
           </div>
         </nav>
       </div>
-
     </>
   );
 };

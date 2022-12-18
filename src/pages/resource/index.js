@@ -46,7 +46,7 @@ export default function Resource() {
                     <div className="py-10 text-center bg-slate-500 rounded">
                         {resType}
                     </div>
-                    <div className="pr-0 md:px-4 py-3 mt-5 sm:flex sm:flex-row-reverse sm:pl-6">
+                    <div className="pr-0 py-3 mt-5 sm:flex sm:flex-row-reverse sm:pl-6">
                         <button type="button" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setPage('summary')}>Submit</button>
                     </div>
                 </form>
@@ -57,9 +57,9 @@ export default function Resource() {
     const Summary = () => {
         return (
             <>
-                <div className="bg-white md:px-4 pt-5">
+                <div className="bg-white pt-5">
                     <div className="sm:items-start">
-                        <div className="block px-2 md:px-6 pb-0">
+                        <div className="block px-2 pb-0">
                             <h1 className="text-center">Summary</h1>
                             <hr className="mt-2 mb-4"></hr>
                             <form>
@@ -109,7 +109,7 @@ export default function Resource() {
                                         value={resType}
                                         disabled />
                                 </div>
-                                <div className="bg-gray-50 pr-0 md:px-4 py-3 sm:flex sm:flex-row-reverse sm:pl-6">
+                                <div className="bg-gray-50 pr-0 py-3 sm:flex sm:flex-row-reverse sm:pl-6">
                                     <button type="submit" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setPage('track')}>Submit</button>
                                     <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setPage('content')}>Back</button>
                                 </div>
@@ -124,14 +124,14 @@ export default function Resource() {
     const Track = () => {
         return (
             <>
-                <div className="bg-white px-4 pt-5">
+                <div className="bg-white pt-5">
                     <div className="sm:items-start">
-                        <div className="block px-6 pb-0">
+                        <div className="block pb-0">
                             <h1 className="text-center">Track</h1>
                             <hr className="mt-2 mb-4"></hr>
                             <form>
-                                <div>Track Page</div>
-                                <div className="bg-gray-50 pr-0 md:px-4 py-3 sm:flex sm:flex-row-reverse sm:pl-6">
+                                <div className="bg-gray-600 text-center p-10 rounded">Track Page</div>
+                                <div className="bg-gray-50 pr-0 py-3 sm:flex sm:flex-row-reverse sm:pl-6">
                                     <button type="submit" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
                                     <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setPage('summary')}>Back</button>
                                 </div>

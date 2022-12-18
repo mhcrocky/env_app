@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaPlus } from 'react-icons/fa';
 import Modal from './modal'
 
@@ -61,8 +61,8 @@ export default function Environment() {
             <div className="flex flex-col">
                 <div className="overflow-x-auto">
                     <div className="p-1.5 w-full inline-block align-middle">
-                        <div className="overflow-hidden border rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-200">
+                        <div className="overflow-auto border rounded-lg">
+                            <table className="divide-y w-full divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th

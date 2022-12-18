@@ -45,10 +45,10 @@ export default function Modal({setShowModal, selected}) {
                                                         <span className="text-red-600">*</span>
                                                     </label>
                                                     <select className="w-full p-1.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-blue-600" name="color"  value={selected.color} required>
-                                                        <option value='red'>Red</option>
-                                                        <option value='yellow'>Yellow</option>
-                                                        <option value='blue'>Blue</option>
-                                                        <option value='green'>Green</option>
+                                                        <option value='Red'>Red</option>
+                                                        <option value='Yellow'>Yellow</option>
+                                                        <option value='Blue'>Blue</option>
+                                                        <option value='Green'>Green</option>
                                                     </select>
 
                                                 </div>

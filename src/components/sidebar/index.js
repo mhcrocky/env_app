@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaBox } from 'react-icons/fa';
 import { FaDumpster } from 'react-icons/fa';
 import { FaKaaba } from 'react-icons/fa';
 import { FaServer } from 'react-icons/fa';
 import { FaQuestionCircle } from 'react-icons/fa';
+import { BiLogOut } from 'react-icons/bi';
 
 import Tooltip from "../tooltip";
+import { useOktaAuth } from "@okta/okta-react";
+
 
 const sidebarLink = [
     {
@@ -38,8 +41,14 @@ const sidebarLink = [
 
 export default function Sidebar({ active }) {
 
+    const { oktaAuth, authState } = useOktaAuth();
+
+    const loggingOut = async () => {
+        await oktaAuth.signOut();
+    }
+
     return (
-        <aside className="md:w-48 lg:w-60 w-12 h-full" aria-label="Sidebar">
+        <div className="md:w-[162px] w-[48px] fixed bottom-0 top-0 left-0" aria-label="Sidebar">
             <div className="p-2 md:py-4 md:px-3 bg-gray-50 rounded-tr-lg rounded-br-lg dark:bg-gray-800 h-full">
                 <Link to={'/'}>
                     <div className="flex justify-center items-center mt-3 mb-4">
@@ -61,8 +70,23 @@ export default function Sidebar({ active }) {
                             </Link>
                         </li>
                     ))}
+
+                    {
+                        authState?.isAuthenticated ? (
+                            <li onClick={()=>loggingOut()} className="rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 absolute bottom-6 md:w-[140px]">
+                                <Tooltip tooltipText='Logout'>
+                                    <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ">
+                                        <BiLogOut />
+                                        <span className="ml-3 hidden md:block">Logout</span>
+                                    </div>
+                                </Tooltip>
+                            </li>
+                        ) : (
+                            null
+                        )
+                    }
                 </ul>
             </div>
-        </aside>
+        </div>
     );
 }
