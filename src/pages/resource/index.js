@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Modal from './modal'
+import React, { useState } from "react";
 import { FaPlus } from 'react-icons/fa';
 
 export default function Resource() {
 
-    const [showModal, setAddModal] = useState(false);
     const [resType, setResType] = useState('type1');
     const [envType, setEnvType] = useState('env1');
     const [page, setPage] = useState('content');
