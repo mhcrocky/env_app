@@ -3,7 +3,7 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import Sidebar from '../sidebar'
-import userAction from '../../utils/redux/action/userAction'
+import userAction from '../../redux/action/userAction'
 
 export default function Layout({ children }) {
   const { authState, oktaAuth } = useOktaAuth();
