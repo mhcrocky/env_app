@@ -48,8 +48,8 @@ export default function Sidebar({ active }) {
     }
 
     return (
-        <div className="md:w-[162px] w-[48px] fixed bottom-0 top-0 left-0" aria-label="Sidebar">
-            <div className="p-2 md:py-4 md:px-3 bg-gray-50 rounded-tr-lg rounded-br-lg dark:bg-gray-800 h-full">
+        <div className="md:w-[190px] w-[48px] fixed bottom-0 top-0 left-0 overflow-y-auto" aria-label="Sidebar">
+            <div className="overflow-y-auto p-2 md:py-4 md:px-3 bg-gray-50 rounded-tr-lg rounded-br-lg dark:bg-gray-800 h-full">
                 <Link to={'/'}>
                     <div className="flex justify-center items-center mt-3 mb-4">
                         <img src="https://flowbite.com/docs/images/logo.svg" className="md:mr-3 h-6" alt="Flowbite Logo" />
@@ -59,7 +59,7 @@ export default function Sidebar({ active }) {
                 <hr className="mb-6"></hr>
                 <ul className="space-y-2">
                     {sidebarLink.map((item, index) => (
-                        <li className={(active == item.title ? 'dark:bg-gray-700 ' : '') + ' rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700'} key={index}>
+                        <li className={(active == item.title ? 'dark:bg-gray-700 ' : '') + 'rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700'} key={index}>
                             <Link to={item.link}>
                                 <Tooltip tooltipText={item.title}>
                                     <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ">
@@ -71,9 +71,10 @@ export default function Sidebar({ active }) {
                         </li>
                     ))}
 
+                        <hr className="pb-3"></hr>
                     {
                         authState?.isAuthenticated ? (
-                            <li onClick={()=>loggingOut()} className="rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 absolute bottom-6 md:w-[140px]">
+                            <li onClick={()=>loggingOut()} className="rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <Tooltip tooltipText='Logout'>
                                     <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ">
                                         <BiLogOut />

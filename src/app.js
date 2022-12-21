@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Security } from '@okta/okta-react';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 
-import Routes from './utils/router';
+import Routes from './pages/router';
 import { oktaAuthConfig } from "./utils/config";
 
 function App() {

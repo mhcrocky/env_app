@@ -2,12 +2,12 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LoginCallback } from '@okta/okta-react';
 
-import Home from '../pages/home';
-import Resource from '../pages/resource';
-import Environment from '../pages/enviroment';
-import Report from '../pages/report';
-import Job from '../pages/job';
-import Help from '../pages/help';
+import Home from './home';
+import Resource from './resource';
+import Environment from './enviroment';
+import Report from './report';
+import Job from './job';
+import Help from './help';
 
 import Layout from '../components/layout'
 
