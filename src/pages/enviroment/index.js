@@ -54,12 +54,12 @@ export default function Environment() {
         console.log(tmp);
         // axios.delete('https://639feb7024d74f9fe829db07.mockapi.io/api/v1/environment', {user_id: currentUser.id})
         // axios.delete('https://639feb7024d74f9fe829db07.mockapi.io/api/v1/environment?user_id='+currentUser.id)
-        // axios.delete('https://639feb7024d74f9fe829db07.mockapi.io/api/v1/environment?environment_name='+tmp[0].EnvironmentName)
-                // .then(response => {
-                //     console.log(response)
-                //     if (response.data.status === "deleted") {
-                //     }
-                // });
+        axios.delete('https://639feb7024d74f9fe829db07.mockapi.io/api/v1/environment?environment_name='+tmp[0].EnvironmentName)
+                .then(response => {
+                    console.log(response)
+                    if (response.data.status === "deleted") {
+                    }
+                });
                 setEnvList(selectedTmp);
             }
 
