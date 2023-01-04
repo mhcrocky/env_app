@@ -38,8 +38,9 @@ export default function Modal({ setShowModal, id = -1, userID, saveData }) {
     setEnvmData(tmp)
     setFocus(name);
   }
-  const InputEnv = ({ name='',value='', inputChanged ,...props}) => {
+  const InputEnv = ({ name='',value='', inputChanged,disabled ,...props}) => {
       const ref = useRef(null);
+      const INPUT_CLASS = "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
       useEffect(()=>{
         if(ref.current.name === focus){
           ref.current.focus();
@@ -50,7 +51,11 @@ export default function Modal({ setShowModal, id = -1, userID, saveData }) {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             {name}
           </label>
-          <input type="text" ref={ref} className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onChange={inputChanged} value={value?value:''} name={name} {...props} />
+          {disabled?(
+          <input type="text" ref={ref} className={INPUT_CLASS} onChange={inputChanged} value={value?value:''} disabled name={name} {...props} />
+          ):(
+          <input type="text" ref={ref} className={INPUT_CLASS} onChange={inputChanged} value={value?value:''} name={name} {...props} />
+          )}
         </div>
       )
   }
@@ -89,8 +94,8 @@ export default function Modal({ setShowModal, id = -1, userID, saveData }) {
 										<form>
 											<div className="grid grid-cols-2 gap-4">
 												{/* {envmData !== null ? <RenderInput envmData={envmData} setEnvmData={setEnvmData} /> : null} */}
-												<InputEnv name="EnvironmentId" value={envmData.EnvironmentId} disabled inputChanged={inputChanged} />
-												<InputEnv name="EnvironmentName" value={envmData.EnvironmentName} disabled inputChanged={inputChanged} />
+												<InputEnv name="EnvironmentId" value={envmData.EnvironmentId} disabled={isUpdate?1:0} inputChanged={inputChanged} />
+												<InputEnv name="EnvironmentName" value={envmData.EnvironmentName} disabled={isUpdate?1:0} inputChanged={inputChanged} />
 												<InputEnv name="CreatedBy" value={envmData.CreatedBy} inputChanged={inputChanged} />
 												<InputEnv name="DefaultLocation" value={envmData.DefaultLocation} inputChanged={inputChanged} />
 												<InputEnv name="HostName" value={envmData.HostName} inputChanged={inputChanged} />
