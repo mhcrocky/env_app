@@ -8,64 +8,67 @@ const TH_CLASS = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
 const TB_CLASS = "px-6 py-4 text-sm text-gray-800 whitespace-nowrap";
 export default function Job() {
   const envData = [
-        {
-            name: 'Apple MacBook Pro 17',
-            color: 'Red',
-            category: 'Laptop',
-            price: '$2999',
-            status: 'active'
-        },
-        {
-            name: 'Microsoft Surface Pro',
-            color: 'Green',
-            category: 'Laptop PC',
-            price: '$1999',
-            status: 'active'
-        },
-        {
-            name: 'Magic Mouse 2',
-            color: 'Green',
-            category: 'Accessories	',
-            price: '$99	',
-            status: 'in-active'
-        },
-        {
-            name: 'Apple Watch',
-            color: 'Blue',
-            category: 'Watches',
-            price: '$199',
-            status: 'active'
-        }
+    {
+      name: 'Apple MacBook Pro 17',
+      color: 'Red',
+      category: 'Laptop',
+      price: '$2999',
+      status: 'active'
+    },
+    {
+      name: 'Microsoft Surface Pro',
+      color: 'Green',
+      category: 'Laptop PC',
+      price: '$1999',
+      status: 'active'
+    },
+    {
+      name: 'Magic Mouse 2',
+      color: 'Green',
+      category: 'Accessories	',
+      price: '$99	',
+      status: 'in-active'
+    },
+    {
+      name: 'Apple Watch',
+      color: 'Blue',
+      category: 'Watches',
+      price: '$199',
+      status: 'active'
+    }
   ]
   const currentUser = useSelector(state => state.usersList)
 
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState(-1);
-  const [jobs,setJobs] = useState([]);
-  const [init,setInit] = useState(false);
-  useEffect(()=>{
-    if(!init){
-      axios.get('https://639ff1677aaf11ceb8a3be9c.mockapi.io/api/v1/job',{user_id:currentUser.id})
-      .then(res=>{
-        setJobs(res.data);
-        setInit(true);
-      })
-    }else{
+  const [jobs, setJobs] = useState([]);
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    if (!init) {
+      axios.get('https://639ff1677aaf11ceb8a3be9c.mockapi.io/api/v1/job', { user_id: currentUser.id })
+        .then(res => {
+          setJobs(res.data);
+          setInit(true);
+        })
+    } else {
       setTimeout(() => {
         setInit(false);
       }, 30000);
     }
-  },[init]);
+  }, [init]);
   const ShowDetail = (key) => {
     setId(key);
     setShowModal(true);
-    console.log(key,'open modal');
+    console.log(key, 'open modal');
+  }
+  const stopJob = (id) => {
+    alert('stoped job');
   }
   return (
-  <>
-    <div className="flex flex-col">
+    <>
+      <div className="flex flex-col">
         <div className="overflow-x-auto">
-          <button type="button" className={BUTTON_CLASS} onClick={()=>setInit(false)} >Refresh</button>
+          <button type="button" className={BUTTON_CLASS} onClick={() => setInit(false)} >Refresh</button>
           <div className="p-1.5 w-full inline-block align-middle">
             <div className="overflow-auto border rounded-lg">
 
@@ -76,6 +79,7 @@ export default function Job() {
                     <th scope="col" className={TH_CLASS}>Name</th>
                     <th scope="col" className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase ">Job Status</th>
                     <th scope="col" className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase ">Details</th>
+                    <th scope="col" className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase ">Stop</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -88,7 +92,10 @@ export default function Job() {
                           {(item.status == 'active' ? <span className="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Active</span> : <span className="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-800">In Active</span>)}
                         </td>
                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap cursor-pointer">
-                          <a className="text-blue-500 hover:text-blue-700" onClick={()=>ShowDetail(item.job_id)} >Detail</a>
+                          <a className="text-blue-500 hover:text-blue-700" onClick={() => ShowDetail(item.job_id)} >Detail</a>
+                          {item.status == 'active' ?
+                            <a className="text-blue-500 hover:text-blue-700" onClick={() => stopJob(item.job_id)} >Stop Job</a>
+                            : <></>}
                         </td>
                       </tr>
                     ))
@@ -98,10 +105,10 @@ export default function Job() {
             </div>
           </div>
         </div>
-    </div>
-    {showModal ? (
-        <Modal setShowModal={setShowModal} id={id}/>
-    ) : null}
-  </>
+      </div>
+      {showModal ? (
+        <Modal setShowModal={setShowModal} id={id} />
+      ) : null}
+    </>
   );
 }
